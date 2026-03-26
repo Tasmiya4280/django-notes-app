@@ -1,6 +1,10 @@
 pipeline {
     agent { label 'local-agent' }
 
+    triggers {
+        githubPush()
+    }
+
     stages {
 
         stage("Code Clone") {
