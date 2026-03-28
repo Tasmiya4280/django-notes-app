@@ -48,5 +48,6 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
+          echo "Username is: $DOCKERHUB_USERNAME"
           docker compose down
           docker compose up -d
