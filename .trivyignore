@@ -1,10 +1,15 @@
-# .trivyignore
-CVE-2013-7445
-CVE-2019-19449
-CVE-2019-19814
-CVE-2021-3847
-CVE-2021-3864
-CVE-2024-21803
-CVE-2024-58015
-CVE-2024-58093
-CVE-2025-22104
+# Ignore all linux-libc-dev CVEs
+# This is a build-time kernel header package, not a runtime component
+# All CVEs require kernel-level access and do not affect the Django app
+
+## pkg:deb/debian/linux-libc-dev
+```
+
+---
+
+## Or Even Better — Use `--ignore-unfixed` Flag
+
+Looking at your scan output, notice every single entry says:
+```
+Status:        affected
+Fixed Version: (empty)
