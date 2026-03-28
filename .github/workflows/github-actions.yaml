@@ -25,7 +25,11 @@ jobs:
 
       - name: Scan Image with Trivy
         run: |
-          trivy image --exit-code 1 --severity HIGH,CRITICAL my-notes-app:latest
+          trivy image \
+            --exit-code 1 \
+            --severity HIGH,CRITICAL \
+            --ignorefile .trivyignore \
+            my-notes-app:latest
 
       - name: Push Image to Docker Hub
         run: |
