@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   nginx:
     build: ./nginx
@@ -14,9 +13,7 @@ services:
       - notes-app-nw
 
   django_app:
-    build:
-      context: .
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/my-notes-app:latest
+    image: ${DOCKERHUB_USERNAME}/my-notes-app:latest
     container_name: "django_cont"
     ports:
       - "8000:8000"
