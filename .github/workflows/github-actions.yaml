@@ -38,14 +38,6 @@ jobs:
           docker tag my-notes-app:latest ${{ secrets.DOCKERHUB_USERNAME }}/my-notes-app:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-notes-app:latest
 
-      - name: Create .env file
-        run: |
-          echo "DB_NAME=${{ secrets.DB_NAME }}" > .env
-          echo "DB_USER=${{ secrets.DB_USER }}" >> .env
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-          echo "DB_HOST=db" >> .env
-          echo "DB_PORT=3306" >> .env
-
       - name: Deploy with Docker Compose
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
