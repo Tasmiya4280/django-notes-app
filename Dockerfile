@@ -10,6 +10,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
+RUN pip install --upgrade wheel setuptools
 RUN pip install mysqlclient
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -17,4 +18,4 @@ COPY . /app/backend
 
 EXPOSE 8000
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "notesapp.wsgi", "--bind", "0.0.0.0:8000"]
