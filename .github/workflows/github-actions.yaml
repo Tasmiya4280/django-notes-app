@@ -12,12 +12,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      
-      - name: Fix workspace permissions
-        run: |
-          sudo rm -rf ./data || true
-          sudo chown -R $USER:$USER . || true  
+        with:
+          clean: false
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -54,6 +50,5 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
-          echo "Username is: $DOCKERHUB_USERNAME"
           docker compose down
           docker compose up -d
