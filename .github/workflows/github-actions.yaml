@@ -44,8 +44,10 @@ jobs:
           echo "DB_HOST=db" >> .env
           echo "DB_PORT=3306" >> .env
 
-      - name: Deploy with Docker Compose
+     - name: Deploy with Docker Compose
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
           docker compose down
           docker compose pull
-          docker compose up -d --build
+          docker compose up -d
